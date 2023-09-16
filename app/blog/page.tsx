@@ -1,4 +1,5 @@
-import Link from "next/link";
+import Posts from "@/components/Posts";
+import PostSearch from "@/components/PostSearch";
 
 async function getData() {
     const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -11,18 +12,12 @@ async function getData() {
 }
 
 const Blog = async () => {
-    const posts = await getData();
 
     return (
         <>
             <h1>Blog page</h1>
-            <ul>
-                {posts.map((post: any) => (
-                    <li key={post.id}>
-                        <Link href={`/blog/${post.id}`}>{post.title}</Link>
-                    </li>
-                ))}
-            </ul>
+            <PostSearch/>
+            <Posts/>
         </>
     );
 }
